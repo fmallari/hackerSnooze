@@ -14,6 +14,38 @@ function navAllStories(evt) {
 
 $body.on("click", "#nav-all", navAllStories);
 
+// SHOW STORY SUBMIT FORM ON CLICKING STORY "SUBMIT"
+
+function navSubmitStory(evt) {
+  console.debug("navSubmitStoryClick", evt);
+  hidePageComponents();
+  $allStoriesList.show();
+  $submitForm.show();
+}
+
+$navSubmitStory.on("click", navSubmitStoryClick);
+
+// SHOW FAVORITE STORIES ON CLICK ON "FAVORITES"
+
+function navFavoritesClick(evt) {
+  console.debug("navFavoritesClick", evt);
+  hidePageComponents();
+  putFavoritesListOnPage();
+}
+
+$bnody.on("click", "#nav-favorites", navFavoritesClick);
+
+// SHOW MY STORIES ON CLICKING "MY STORIES"
+
+function navMyStories(evt) {
+  console.debug("nacMyStories", evt);
+  hidePageComponents();
+  putUserStoriesOnPage();
+  $ownStories.show();
+}
+
+$body.on("click", "#nav-my-stories", navMyStories);
+
 /** Show login/signup on click on "login" */
 
 function navLoginClick(evt) {
