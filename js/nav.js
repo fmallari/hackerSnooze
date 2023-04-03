@@ -16,7 +16,7 @@ $body.on("click", "#nav-all", navAllStories);
 
 // SHOW STORY SUBMIT FORM ON CLICKING STORY "SUBMIT"
 
-function navSubmitStory(evt) {
+function navSubmitStoryClick(evt) {
   console.debug("navSubmitStoryClick", evt);
   hidePageComponents();
   $allStoriesList.show();
@@ -33,7 +33,7 @@ function navFavoritesClick(evt) {
   putFavoritesListOnPage();
 }
 
-$bnody.on("click", "#nav-favorites", navFavoritesClick);
+$body.on("click", "#nav-favorites", navFavoritesClick);
 
 // SHOW MY STORIES ON CLICKING "MY STORIES"
 

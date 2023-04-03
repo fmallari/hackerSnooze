@@ -61,6 +61,7 @@ class StoryList {
 
     // turn plain old story objects from API into instances of Story class
     const stories = response.data.stories.map(story => new Story(story));
+    console.log(stories)
 
     // build an instance of our own class using the new array of stories
     return new StoryList(stories);

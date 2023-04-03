@@ -73,7 +73,9 @@ $navLogOut.on("click", logout);
  */
 
 async function checkForRememberedUser() {
+  console.log("IS THIS WORKING?");
   console.debug("checkForRememberedUser");
+  
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
   if (!token || !username) return false;
@@ -88,14 +90,11 @@ async function checkForRememberedUser() {
  * (or the user revisits the site later), they will still be logged in.
  */
 
-function saveUserCredentialsInLocalStorage(currentUser) {
+function saveUserCredentialsInLocalStorage() {
   console.debug("saveUserCredentialsInLocalStorage");
   if (currentUser) {
     localStorage.setItem("token", currentUser.loginToken);
     localStorage.setItem("username", currentUser.username);
-    localStorage.setItem("password", currentUser.password);
-    localStorage.setItem("name", currentUser.name);
-  }
 }
 
 /******************************************************************************
@@ -126,7 +125,8 @@ async function updateUIOnUserLogin() {
 
 function generateUserProfile() {
   console.debug("generateUserProfile");
+
   $("profile-name").text(currentUser.name);
   $("profile-username").text(currentUser.username);
   $("profile-account-date").text(currentUser.createdAt.slice(0, 10));
-}
+}}

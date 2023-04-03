@@ -7,9 +7,11 @@ let storyList;
 
 async function getAndShowStoriesOnStart() {
   storyList = await StoryList.getStories();
+  console.log("storyList", storyList);
   $storiesLoadingMsg.remove();
 
-  putStoriesOnPage();
+  const storyPage = putStoriesOnPage();
+  console.log(storyPage);
 }
 
 /**
@@ -25,6 +27,10 @@ function generateStoryMarkup(story, showDeleteBtn = false) {
   // console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
+
+// if a user is logged in, show favorite/not-favorite star
+const showStar = Boolean(currentUser);
+
   return $(`
       <li id="${story.storyId}">
       ${showDeleteBtn ? getDeleteBtnHTML() : ""}
@@ -48,7 +54,7 @@ function getDeleteBtnHTML() {
   </span>`;
 }
 
-// MAKE FACORITE/NONE-FAVORITE STAR FOR STORY
+// MAKE FAVORITE/NONE-FAVORITE STAR FOR STORY
 
 function getStarHTML(story, user) {
   const isFavorite = user.isFavorite(story);
@@ -71,7 +77,7 @@ function putStoriesOnPage() {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
   }
-
+console.log($allStoriesList);
   $allStoriesList.show();
 }
 
