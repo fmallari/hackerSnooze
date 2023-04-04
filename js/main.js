@@ -10,7 +10,7 @@ const $favoritedStories = $("#favorited-stories");
 const $ownStories = $("#my-stories");
 
 //selector that finds all three story lsits
-const $storiesList = $(".stories-list");
+const $storiesLists = $(".stories-list");
 
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");

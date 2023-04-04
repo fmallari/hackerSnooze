@@ -157,7 +157,7 @@ class User {
     });
 
     let { user } = response.data
-
+    console.log("user", user);
     return new User(
       {
         username: user.username,

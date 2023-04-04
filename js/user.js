@@ -10,6 +10,7 @@ let currentUser;
 /** Handle login form submission. If login ok, sets up the user instance */
 
 async function login(evt) {
+  console.log("SIGN UP NOW")
   console.debug("login", evt);
   evt.preventDefault();
 
@@ -27,26 +28,33 @@ async function login(evt) {
   updateUIOnUserLogin();
 }
 
-$loginForm.on("submit", login);
+  $loginForm.on("submit", login);
 
 /** Handle signup form submission. */
 
 async function signup(evt) {
-  console.debug("signup", evt);
-  evt.preventDefault();
 
-  const name = $("#signup-name").val();
-  const username = $("#signup-username").val();
-  const password = $("#signup-password").val();
+  try{
+    console.debug("signup", evt);
+    evt.preventDefault();
+  
+    const name = $("#signup-name").val();
+    const username = $("#signup-username").val();
+    const password = $("#signup-password").val();
+    console.log("HELLO USER!");
+    // User.signup retrieves user info from API and returns User instance
+    // which we'll make the globally-available, logged-in user.
+    currentUser = await User.signup(username, password, name);
+  
+    saveUserCredentialsInLocalStorage();
+    updateUIOnUserLogin();
+  
+    $signupForm.trigger("reset");
+  }catch(error){
+  console.log(error.message);
+  }
 
-  // User.signup retrieves user info from API and returns User instance
-  // which we'll make the globally-available, logged-in user.
-  currentUser = await User.signup(username, password, name);
-
-  saveUserCredentialsInLocalStorage(currentUser);
-  updateUIOnUserLogin();
-
-  $signupForm.trigger("reset");
+  
 }
 
 $signupForm.on("submit", signup);
@@ -96,7 +104,7 @@ function saveUserCredentialsInLocalStorage() {
     localStorage.setItem("token", currentUser.loginToken);
     localStorage.setItem("username", currentUser.username);
 }
-
+}
 /******************************************************************************
  * General UI stuff about users
  */
@@ -129,4 +137,4 @@ function generateUserProfile() {
   $("profile-name").text(currentUser.name);
   $("profile-username").text(currentUser.username);
   $("profile-account-date").text(currentUser.createdAt.slice(0, 10));
-}}
+}

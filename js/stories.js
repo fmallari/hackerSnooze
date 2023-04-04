@@ -84,7 +84,7 @@ console.log($allStoriesList);
 // HANDLE DELETING A STORY
 
 async function deleteStory(evt) {
-  console.log("deleteStory");
+  console.debug("deleteStory");
 
   const $closestLi = $(evt.target).closest("li");
   const storyId = $closestLi.attr("id");
@@ -164,4 +164,4 @@ if ($tgt.hasClass("fas")) {
 }
 }
 
-$storiesList.on("click", ".star", toggleStoryFavorite);
+$storiesLists.on("click", ".star", toggleStoryFavorite);
