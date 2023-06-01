@@ -24,7 +24,7 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
+    // UNIMPLEMENTED: COMPLETE THIS FUNCTION
     return new URL(this.url).host;
   }
 }
@@ -75,7 +75,7 @@ class StoryList {
    */
 
   async addStory(user, {title, author, url}) {
-    // UNIMPLEMENTED: complete this function!
+    // UNIMPLEMENTED: COMPLETE THIS FUNCTION
     const token = user.loginToken;
     const response = await axios({
       method: "POST",
